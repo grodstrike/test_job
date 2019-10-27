@@ -51,7 +51,7 @@
 			
 		</td>
 	  <?php if (Auth\User::isAuthorized()):?>
-	  <td><a href="/edit?id=<?php echo $post['id'];?>">Изменить</a></td>
+	  <td><a href="/edit?id=<?php echo $post['id'];?>"><i class="fas fa-edit"></i> Изменить</a></td>
 	   <?php endif;?>
     </tr>
 	
