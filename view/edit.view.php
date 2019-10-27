@@ -1,17 +1,19 @@
 <?php
-
-if (empty($_GET['id'])) {
+include './model/edit.php';
+if (empty($_GET['id']) || empty($task_data['id'])) {
 ?>
 <div class="container">
-	<span style="font-size:18px;">Ошибка! Перейдите на главную страницу для редактирования.</span>
+	<span style="font-size:18px;">Ошибка! Задача не найдена. Перейдите на <a href="/">главную страницу</a>.</span>
 </div>
 <?php
 	exit;
 }
-else{
-	include './model/edit.php';
-}
+
+
+
+
 ?>
+
 <?php if (Auth\User::isAuthorized()):?>
 <div class="container">
 <div class="col-sm-6 col-sm-offset-3">
@@ -36,7 +38,12 @@ else{
             <div class="help-block with-errors"></div>
         </div>
 		<div class="form-group">
-		<input type="checkbox" id="one" <?=$checked;?>>  Выполнена
+		<!-- Default unchecked -->
+		<div class="custom-control custom-checkbox">
+			<input type="checkbox" class="custom-control-input" id="defaultUnchecked" <?=$checked;?>>
+			<label class="custom-control-label" for="defaultUnchecked">Выполнена</label>
+		</div>
+		
 		 </div>
         <button type="submit" id="form-submit" class="btn btn-success btn-lg pull-right ">Отправить</button>
         <div id="msgSubmit" class="h3 text-center hidden"></div>
@@ -67,7 +74,7 @@ function submitForm(){
     var name = $("#name").val();
     var email = $("#email").val();
     var message = $("#message").val();
-	var checkBox = document.getElementById("one");
+	var checkBox = document.getElementById("defaultUnchecked");
 	if (checkBox.checked == true){
      var checked = '1';
   } else {

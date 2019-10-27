@@ -1,8 +1,12 @@
 .form-control {
 	width: 19%;
 }
-
-
+.active {
+	border-bottom:1px solid;
+}
+.done {
+	font-weight:600;
+}
 
 ul li ul {
     visibility: hidden;

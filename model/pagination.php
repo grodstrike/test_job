@@ -1,4 +1,6 @@
 <?php
+				#пагинация
+
 				$pagination_amount = intval(count($data_jobs) / $item_per_page) + 1;
 				$order='?';
 

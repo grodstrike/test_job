@@ -1,4 +1,6 @@
 <?php
+
+		#конфиг БД
 		$dblocation = "localhost";
 		$dbname = "deltdelt_jee";
 		$dbuser = "deltdelt_jee";

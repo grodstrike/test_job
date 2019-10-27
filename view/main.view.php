@@ -2,25 +2,29 @@
 	$root = $_SERVER['DOCUMENT_ROOT'];
 	require_once ($root . '/model/model.php');
 ?>
+<div  class="container">
 <div  class="row">
-<div class="container" style="text-align:center;">
-<span style="font-weight:600;">Сортировка:</span> Имя 
-<a href="#" data-option="nameu" onclick="myFunction(this);">По уб. ↓</a> 
-<a href="#" data-option="namev" onclick="myFunction(this);">По возр. ↑</a> • E-mail
-<a href="#" data-option="emailu" onclick="myFunction(this);">По уб. ↓</a> 
-<a href="#" data-option="emailv" onclick="myFunction(this);">По возр. ↑</a> • Статус
-<a href="#"  data-option="statusu" onclick="myFunction(this);">По уб. ↓</a> 
-<a href="#" data-option="statusv" onclick="myFunction(this);">По возр. ↑</a> • 
-<a  href="#" data-option="id" onclick="myFunction(this);">Сбросить</a>
+<div class="container osnova-test" style="text-align:center;">
+<span style="font-weight:600;">Сортировка:</span>
+<a  href="#" data-option="id" id="id"  onclick="myFunction(this);">Сбросить</a>
 </div>
 </div>
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">Имя</th>
-      <th scope="col">E-mail</th>
-      <th scope="col">Текст задачи</th>
-      <th scope="col">Статус</th>
+     <th scope="col">Имя 
+		 <a href="#" data-option="nameu" id="nameu" onclick="myFunction(this);"><i class="fas fa-arrow-down"></i></a> 
+		 <a href="#" data-option="namev" class="" id="namev" onclick="myFunction(this);"><i class="fas fa-arrow-up"></i></a>
+	 </th>
+     <th scope="col">E-mail
+		<a href="#" data-option="emailu"  id="emailu" onclick="myFunction(this);"><i class="fas fa-arrow-down"></i></a> 
+		<a href="#" data-option="emailv"  id="emailv" onclick="myFunction(this);"><i class="fas fa-arrow-up"></i></a>
+	</th>
+     <th scope="col">Текст задачи</th>
+     <th scope="col">Статус 
+		<a href="#"  data-option="statusu"  id="statusu" onclick="myFunction(this);"><i class="fas fa-arrow-down"></i></a> 
+		<a href="#" data-option="statusv"  id="statusv" onclick="myFunction(this);"><i class="fas fa-arrow-up"></i></a>
+	</th>
 	   <?php if (Auth\User::isAuthorized()):?>
 	   <th scope="col">Редактирование</th>
 	   <?php endif;?>
@@ -39,7 +43,7 @@
       <td><?=$post['text'];?></td>
 		<td> 
 			<?php if (!empty($post['statusc'])) {
-				echo 'Выполнено';
+				echo '<span class="done"><i class="fas fa-check"></i> Выполнено</span>';
 			}
 				else {
 					echo 'Не выполнено';
@@ -77,7 +81,7 @@
 			
 		</div>
 		
-
+</div>
 <script>
 
 function myFunction(d) {
@@ -100,8 +104,16 @@ function myFunction(d) {
 
 }
 
+function activeEl() {
+	
+}
+
+var d = document.getElementById("<?=$_SESSION['query_sql']?>");
+d.classList.add("active");
+
 function formSuccess(){
     window.location.reload(false); 
 
+	
 }
 </script>
