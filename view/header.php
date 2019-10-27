@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="/css/styles.css">
 	<link rel="stylesheet" href="/css/animate.css">
-	<link rel="stylesheet" href="/css/font-awesome.min.css">
+	<script src="https://kit.fontawesome.com/b69ec444b5.js" crossorigin="anonymous"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 	<script type="text/javascript" src="/js/validator.min.js"></script>
@@ -39,10 +39,10 @@ if (empty($_SESSION['query_sql'])) {
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="/">Главная</a>
+        <a class="nav-link" href="/"><i class="fas fa-home"></i> Главная</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/add">Добавить задачу</a>
+        <a class="nav-link" href="/add"><i class="fas fa-plus-square"></i> Добавить задачу</a>
       </li>
 	  <?php if (Auth\User::isAuthorized()):?>
 		<li class="nav-item">
@@ -50,7 +50,7 @@ if (empty($_SESSION['query_sql'])) {
 		<form class="ajax" method="post" action="./ajax.php">
           <input type="hidden" name="act" value="logout">
           <div class="form-actions">
-              <button class="btn btn-large btn-primary" type="submit"  style="background-color: #007bff00; color: rgba(0,0,0,.5);    border-color: #ffffff00;">Выйти</button>
+              <button class="btn btn-large btn-primary" type="submit"  style="background-color: #007bff00; color: rgba(0,0,0,.5);    border-color: #ffffff00;"><i class="fas fa-sign-out-alt"></i> Выйти</button>
           </div>
       </form>
 		
@@ -62,7 +62,7 @@ if (empty($_SESSION['query_sql'])) {
 	  
 	  ?>
       <li class="nav-item">
-        <a class="nav-link" href="/login">Авторизация</a>
+        <a class="nav-link" href="/login"><i class="fas fa-sign-in-alt"></i> Авторизация</a>
       </li>
 	<?php endif;?>
     </ul>

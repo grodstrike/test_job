@@ -5,6 +5,7 @@ $root = $_SERVER['DOCUMENT_ROOT'];
 	require_once ($root . '/model/config.php');
 $conn = new mysqli($dblocation, $dbname, $dbpasswd, $dbname);
 $explode_names = $_GET['id'];
+
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 	}

@@ -1,5 +1,16 @@
 <?php
-include './model/edit.php';
+
+if (empty($_GET['id'])) {
+?>
+<div class="container">
+	<span style="font-size:18px;">Ошибка! Перейдите на главную страницу для редактирования.</span>
+</div>
+<?php
+	exit;
+}
+else{
+	include './model/edit.php';
+}
 ?>
 <?php if (Auth\User::isAuthorized()):?>
 <div class="container">
