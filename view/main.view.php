@@ -66,7 +66,7 @@
   <?php }}?>
   
     
-
+<?php #print_r($_SESSION['query_sql']);?>
   </tbody>
 </table>
 
