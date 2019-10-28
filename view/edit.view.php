@@ -1,24 +1,17 @@
 <?php
-include './model/edit.php';
 if (empty($_GET['id']) || empty($task_data['id'])) {
 ?>
 <div class="container">
 	<span style="font-size:18px;">Ошибка! Задача не найдена. Перейдите на <a href="/">главную страницу</a>.</span>
 </div>
 <?php
-	exit;
-}
-
-
-
-
+exit;}
 ?>
-
-<?php if (Auth\User::isAuthorized()):?>
 <div class="container">
 <div class="col-sm-6 col-sm-offset-3">
     <div class="well" style="margin-top: 10%;">
     <h3>Редактирование задачи №<?=$task_data['id'];?></h3>
+
     <form role="form" id="contactForm" data-toggle="validator" class="shake">
         <div class="row">
             <div class="form-group col-sm-6">
@@ -42,13 +35,25 @@ if (empty($_GET['id']) || empty($task_data['id'])) {
 		<div class="custom-control custom-checkbox">
 			<input type="checkbox" class="custom-control-input" id="defaultUnchecked" <?=$checked;?>>
 			<label class="custom-control-label" for="defaultUnchecked">Выполнена</label>
+			<div class="created-edit">
+				<span style="font-weight:500"> Время создания:</span> <?=$task_data['date'];?>
+				<?php if (!empty($task_data['statused'])):?>
+					<p><span style="font-weight:500">Отредактировано:</span> <?=$task_data['date_edit'];?>
+					
+				<?php endif;?>
+				<p><span class="btn btn-success btn-sm pull-right delete-job" style="cursor:pointer;background-color: #ff1a1a; border-color: #a72828;float:right;">Удалить задачу</span><div class="gotovo" id="gotovo"></div></div>
+			</div>
 		</div>
 		
 		 </div>
-        <button type="submit" id="form-submit" class="btn btn-success btn-lg pull-right ">Отправить</button>
-        <div id="msgSubmit" class="h3 text-center hidden"></div>
+		 <div class="form-group">
+			<button type="submit" id="form-submit" class="btn btn-success btn-lg pull-right ">Отправить</button>
+			
+		</div>
+	   <div id="msgSubmit" class="h3 text-center hidden"></div>
         <div class="clearfix"></div>
     </form>
+
     </div>
 </div>
 </div>
@@ -118,30 +123,39 @@ function submitMSG(valid, msg){
     }
     $("#msgSubmit").removeClass().addClass(msgClasses).text(msg);
 }
+
+jQuery(".delete-job").click(function() {
+	console.log( "mod-deleted!" );
+	var id = <?php echo $task_data['id'];?>;
+    jQuery.ajax({
+		
+        url: '/model/del-job.php',
+        type: 'POST',
+        data: {"id":id},
+		  beforeSend: function(html) { // запустится до вызова запроса
+                    $(".delete-job").hide("slow");
+					var ele = document.getElementById('gotovo');
+	ele.innerHTML = 'Ждите..<img src="default.gif" id="spin">';
+	
+	ele.style.cursor = 'not-allowed';
+	ele.disabled = true;
+				
+               },
+               success: function(html){ // запустится после получения результатов
+                   
+					 $(".gotovo").show("slow");
+					var ele = document.getElementById('gotovo');
+	ele.innerHTML = '<span style="font-weight:500;font-size:14px;">Удалено! Вы перейдете на главную страницу через 5 секунд...</span>';
+	ele.style.cursor = 'pointer';
+	ele.disabled = false;
+	setTimeout(function(){
+            window.location.href = '/';
+         }, 5000);
+              }
+    });
+	
+	
+	
+});
+
 </script>
-
-<?php 
-
-else:?>
-<div class="container">
-<form class="form-signin ajax form-group" method="post" action="./ajax.php">
-        <div class="main-error alert alert-error hide"></div>
-
-        <h2 class="form-signin-heading">Для доступа к редактированию необходима авторизация</h2>
-		<div class="form-group" style="width: 19%;">
-        <input name="username" type="text" class="input-block-level form-control" placeholder="Логин" autofocus>
-		</div>
-		<div class="form-group">
-        <input name="password" type="password" class="input-block-level form-control" placeholder="Пароль"  style="width: 19%;">
-		</div>
-        <label class="checkbox">
-          <input name="remember-me" type="checkbox" value="remember-me" checked> Запомнить меня
-        </label>
-		<div class="form-group" style="width: 19%;">
-        <input type="hidden" name="act" value="login">
-        <button class="btn btn-large btn-primary" type="submit">Войти</button>
-		</div>
-    
-      </form>
-</div>
-<?php endif;?>

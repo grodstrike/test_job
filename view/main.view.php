@@ -1,7 +1,3 @@
-<?php
-	$root = $_SERVER['DOCUMENT_ROOT'];
-	require_once ($root . '/model/model.php');
-?>
 <div  class="container">
 <div  class="row">
 <div class="container osnova-test" style="text-align:center;">
@@ -38,9 +34,9 @@
 
 		<?php if ($key < $pagination_finish_key && $key >= $pagination_start_key) {?>
 	<tr>
-      <th scope="row"><?=$post['name'];?></th>
-      <td><?=$post['email'];?></td>
-      <td><?=$post['text'];?></td>
+		<th scope="row"><?=$post['name'];?></th>
+		<td><?=$post['email'];?></td>
+		<td><?=$post['text'];?></td>
 		<td> 
 			<?php if (!empty($post['statusc'])) {
 				echo '<span class="done"><i class="fas fa-check"></i> Выполнено</span>';
@@ -58,27 +54,14 @@
 	  <td><a href="/edit?id=<?php echo $post['id'];?>"><i class="fas fa-edit"></i> Изменить</a></td>
 	   <?php endif;?>
     </tr>
-	
-	
-
-
-
   <?php }}?>
-  
-    
-<?php #print_r($_SESSION['query_sql']);?>
+ 
   </tbody>
 </table>
-
-	
 		<div class="text-center">
-			
-				
 					<ul class="pagination" style="justify-content: center;">
 						<?php include './model/pagination.php';?>
 					</ul>
-				
-			
 		</div>
 		
 </div>

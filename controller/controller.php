@@ -27,19 +27,26 @@ function login() {
 }
 function mainview() {
 	include './view/header.php';
+	include ('./model/model.php');
    include './view/main.view.php';
    include './view/footer.php';
 }
 
 function edit() {
 	include './view/header.php';
+	include './model/edit.php';
+	session_start();
+	if (Auth\User::isAuthorized()){
 	include './view/edit.view.php';
+	} else {
+		include './view/edit404.view.php';
+	}
 	include './view/footer.php';
 }
 
 function notFound() {
     header("HTTP/1.0 404 Not Found");
-
+	include './view/header.php';
      include './view/404.view.php';
 }
 

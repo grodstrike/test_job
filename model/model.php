@@ -35,8 +35,8 @@
 		$sort = 'DESC';
 	}
 	elseif ($_SESSION['query_sql'] == 'id') {
-		$cell = 'statusc';
-		$sort = 'DESC';
+		$cell = 'id';
+		$sort = 'ASC';
 	}
 	#print_r($_SESSION['query_sql']);
 	$query = 'ORDER by '.$cell.' '.$sort;	
@@ -55,7 +55,7 @@
         
     }
 	} else {
-		echo "0 results";
+		echo "Ошибка!";
 	}
 
 	for ($i=0; ; $i++)

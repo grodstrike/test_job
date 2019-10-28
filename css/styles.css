@@ -1,5 +1,16 @@
+/*
+MAIN STYLES
+*/
+
+.error-template {padding: 40px 15px;text-align: center;}
+.error-actions {margin-top:15px;margin-bottom:15px;}
+.error-actions .btn { margin-right:10px; }
+
 .form-control {
 	width: 19%;
+}
+.created-edit {
+	font-size: 12px; margin: 0% 0% 4% 0%; float: right
 }
 .page-link.active {
 	color: #0056b3;

@@ -7,7 +7,13 @@
 	
 	$link = mysqli_connect($dblocation, $dbname, $dbpasswd, $dbname);
 	$errorMSG = "";
-
+	
+	
+	foreach ($_POST as $key => $post) {
+		if (empty($post)){
+			$errorMSG = $key."is required ";
+	} else {$data_jobst[$key] = $post;}
+	}
 
 	if (empty($_POST["name"])) {
 		$errorMSG = "Name is required ";
@@ -45,10 +51,11 @@
 	} else {
 		$checked = ',statusc=1';
 	}
+	$current_time = date('Y-m-d G:i:s');
 	session_start();
 
 	if (!empty($_SESSION['user_id'])) {
-	$result = mysqli_query($link, "UPDATE main SET name='$name', text='$text', email='$email', statused='1'".$checked." WHERE id='$id'");
+	$result = mysqli_query($link, "UPDATE main SET date_edit='$current_time', name='$name', text='$text', email='$email', statused='1'".$checked." WHERE id='$id'");
 
 	}
 	else 
