@@ -8,21 +8,21 @@
 <table class="table">
   <thead>
     <tr>
-     <th scope="col">Имя 
+     <th scope="col" style="width: 12%;"> Имя 
 		 <a href="#" data-option="nameu" id="nameu" onclick="myFunction(this);"><i class="fas fa-arrow-down"></i></a> 
 		 <a href="#" data-option="namev" class="" id="namev" onclick="myFunction(this);"><i class="fas fa-arrow-up"></i></a>
 	 </th>
-     <th scope="col">E-mail
+     <th scope="col"> E-mail
 		<a href="#" data-option="emailu"  id="emailu" onclick="myFunction(this);"><i class="fas fa-arrow-down"></i></a> 
 		<a href="#" data-option="emailv"  id="emailv" onclick="myFunction(this);"><i class="fas fa-arrow-up"></i></a>
 	</th>
      <th scope="col">Текст задачи</th>
-     <th scope="col">Статус 
+     <th scope="col" style="width: 14%;"><i class="fas fa-info-circle"></i> Статус 
 		<a href="#"  data-option="statusu"  id="statusu" onclick="myFunction(this);"><i class="fas fa-arrow-down"></i></a> 
 		<a href="#" data-option="statusv"  id="statusv" onclick="myFunction(this);"><i class="fas fa-arrow-up"></i></a>
 	</th>
 	   <?php if (Auth\User::isAuthorized()):?>
-	   <th scope="col">Редактирование</th>
+	   <th scope="col" style="width: 17%;">Редактирование</th>
 	   <?php endif;?>
     </tr>
   </thead>
@@ -39,7 +39,7 @@
 		<td><?=$post['text'];?></td>
 		<td> 
 			<?php if (!empty($post['statusc'])) {
-				echo '<span class="done"><i class="fas fa-check"></i> Выполнено</span>';
+				echo '<span class="done"><i class="fas fa-check" style="color: green;"></i> Выполнено</span>';
 			}
 				else {
 					echo 'Не выполнено';

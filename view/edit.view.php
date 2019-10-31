@@ -1,12 +1,3 @@
-<?php
-if (empty($_GET['id']) || empty($task_data['id'])) {
-?>
-<div class="container">
-	<span style="font-size:18px;">Ошибка! Задача не найдена. Перейдите на <a href="/">главную страницу</a>.</span>
-</div>
-<?php
-exit;}
-?>
 <div class="container">
 <div class="col-sm-6 col-sm-offset-3">
     <div class="well" style="margin-top: 10%;">
@@ -41,7 +32,7 @@ exit;}
 					<p><span style="font-weight:500">Отредактировано:</span> <?=$task_data['date_edit'];?>
 					
 				<?php endif;?>
-				<p><span class="btn btn-success btn-sm pull-right delete-job" style="cursor:pointer;background-color: #ff1a1a; border-color: #a72828;float:right;">Удалить задачу</span><div class="gotovo" id="gotovo"></div></div>
+				<p><!--span class="btn btn-success btn-sm pull-right delete-job" style="cursor:pointer;background-color: #ff1a1a; border-color: #a72828;float:right;">Удалить задачу</span--><div class="gotovo" id="gotovo"></div></div>
 			</div>
 		</div>
 		
@@ -81,9 +72,9 @@ function submitForm(){
     var message = $("#message").val();
 	var checkBox = document.getElementById("defaultUnchecked");
 	if (checkBox.checked == true){
-     var checked = '1';
+		var checked = '1';
   } else {
-         var checked = '0';
+        var checked = '0';
   }
 	var id = <?=$task_data['id'];?>;
 	var session = <?=$_SESSION["user_id"];?>;

@@ -9,11 +9,7 @@
 	$errorMSG = "";
 	
 	
-	foreach ($_POST as $key => $post) {
-		if (empty($post)){
-			$errorMSG = $key."is required ";
-	} else {$data_jobst[$key] = $post;}
-	}
+
 
 	if (empty($_POST["name"])) {
 		$errorMSG = "Name is required ";

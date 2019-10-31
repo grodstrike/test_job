@@ -33,3 +33,8 @@
 	}
 
 	$test_edit = $_SESSION['user_id'];
+	
+	if (empty($_GET['id']) || empty($task_data['id'])) { 
+	require_once ($root . '/view/404.view.php');
+	exit();
+	}

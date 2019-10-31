@@ -28,8 +28,8 @@ function login() {
 function mainview() {
 	include './view/header.php';
 	include ('./model/model.php');
-   include './view/main.view.php';
-   include './view/footer.php';
+	include './view/main.view.php';
+	include './view/footer.php';
 }
 
 function edit() {
